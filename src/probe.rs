@@ -36,6 +36,10 @@ pub fn open(opts: &cli::Opts) -> Result<Probe, anyhow::Error> {
         probe.set_speed(speed)?;
     }
 
+    if let Some(p) = opts.protocol {
+        probe.select_protocol(p)?;
+    }
+
     Ok(probe)
 }
 

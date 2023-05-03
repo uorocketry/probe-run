@@ -4,7 +4,7 @@ use clap::{ArgAction, Parser};
 use defmt_decoder::DEFMT_VERSION;
 use git_version::git_version;
 use log::Level;
-use probe_rs::Probe;
+use probe_rs::{Probe, WireProtocol};
 
 use crate::probe;
 
@@ -82,6 +82,9 @@ pub struct Opts {
     /// The probe clock frequency in kHz
     #[arg(long, env = "PROBE_RUN_SPEED")]
     pub speed: Option<u32>,
+
+    #[arg(long, env = "PROBE_RUN_PROTOCOL")]
+    pub protocol: Option<WireProtocol>,
 
     /// Enable more verbose output.
     #[arg(short, long, action = ArgAction::Count)]
